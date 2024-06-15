@@ -16,6 +16,7 @@ const corsOptions = {
 };
 
 const corsMiddleware = cors(corsOptions);
+app.use(corsMiddleware);
 app.use(express.json());
 
 mongoose
