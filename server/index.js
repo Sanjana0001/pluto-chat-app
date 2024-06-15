@@ -7,7 +7,14 @@ const app = express();
 const socket = require("socket.io");
 require("dotenv").config();
 
-app.use(cors({origin:true,credentials:true}));
+const corsOptions = {
+  origin: '*', // Replace with your allowed origins if you don't want to allow all
+  credentials: true, // Set to true if your API requires cookies
+  optionSuccessStatus: 200, // Optional: Code to send for preflight requests
+};
+
+const corsMiddleware = cors(corsOptions);
+app.use(corsMiddleware);
 app.use(express.json());
 
 mongoose
