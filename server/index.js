@@ -8,9 +8,12 @@ const socket = require("socket.io");
 require("dotenv").config();
 
 const corsOptions = {
-  origin: '*', // Replace with your allowed origins if you don't want to allow all
-  credentials: true, // Set to true if your API requires cookies
-  optionSuccessStatus: 200, // Optional: Code to send for preflight requests
+  origin: 'https://pluto-chat-app.vercel.app', // Specify your allowed origin
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS', // Allowed methods
+  allowedHeaders: 'Content-Type, Authorization', // Allowed headers
+  credentials: true, // If you need to handle cookies or authentication tokens
+  preflightContinue: false,
+  optionsSuccessStatus: 204 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 
 const corsMiddleware = cors(corsOptions);
